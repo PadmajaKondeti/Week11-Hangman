@@ -1,0 +1,27 @@
+{
+  "name": "week11-hangman",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PadmajaKondeti/Week11-Hangman.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PadmajaKondeti/Week11-Hangman/issues"
+  },
+  "homepage": "https://github.com/PadmajaKondeti/Week11-Hangman#readme",
+  "dependencies": {
+    "3000-words-list": "0.0.3",
+    "fs.js": "0.0.1",
+    "inquirer": "^1.1.2",
+    "random-word": "^1.0.2",
+    "word-list": "^1.0.1",
+    "word-stream": "^1.1.0"
+  }
+}
