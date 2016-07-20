@@ -11,5 +11,4 @@ var wordArray = fs.readFileSync(wordListPath, 'utf8')
 var wordArray = wordArray.split('\n');
 
 var rand = wordArray[Math.floor(Math.random() * wordArray.length)];
-console.log(rand);
 module.exports = rand;

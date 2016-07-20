@@ -1,2 +1,2 @@
-var word = require('./word.js');
-console.log(word);
+
+var letter = require('./letter.js');
