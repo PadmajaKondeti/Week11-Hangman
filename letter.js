@@ -5,11 +5,13 @@ var count = 0;
 var wordBlank=[];
 var length1 = word.length;
 for (var i=0; i<length1; i++){
-	wordBlank[i] =" _ ";
+	wordBlank +=" _ ";
 }
+require('events').EventEmitter.prototype._maxListeners = 100;
 console.log(wordBlank);
+wordBlank = wordBlank.split("");
 var letter1 = function(){
-    if (count < length1) {
+	if (count < length1) {
 		//RUNS INQUIRER AND ASKS THE USER A SERIES OF QUESTIONS WHOSE REPLIES ARE STORED WITHIN THE VARIABLE answers INSIDE OF THE .then STATEMENT.
 		inquirer.prompt([{	
 			name: "guess",
@@ -17,12 +19,14 @@ var letter1 = function(){
 			}
 		]).then(function(answer) {
 			var value = word.indexOf(answer.guess);
-			console.log(value);
-			wordBlank[value] = " "+ answer.guess + " ";
-			console.log(wordBlank);
+			if (value >= 0 ){
+				console.log(value);
+				wordBlank[value] = " "+ answer.guess + " ";
+				console.log(wordBlank.toString());
+			}		
 		})
 	   count++;
-	   //letter1();
+	   letter1();
     };
 };
 letter1();
