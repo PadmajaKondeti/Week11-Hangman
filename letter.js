@@ -1,7 +1,7 @@
 var inquirer = require('inquirer');
 var word = require('./word.js');
 console.log(word);
-var count = 0;
+var count = 0, numGuesses = 0;
 var wordBlank=[];
 var wordlength = word.length;
 for (var i=0; i<wordlength; i++){
@@ -11,7 +11,7 @@ var guessedWord = wordBlank;
 console.log(guessedWord);
 var wordBlankArray = wordBlank.trim().split(' ');
 var guessLetter = function(){
-	if (guessedWord.indexOf('_')>= 0){
+	if ((guessedWord.indexOf('_')>= 0) && (numGuesses < wordlength)){
 		inquirer.prompt([{
 			name: "guess",
 			message: "Guess a letter?"
@@ -19,7 +19,12 @@ var guessLetter = function(){
 		]).then(function(answer) {
 			var indices = [];
 			for(var i=0; i<wordlength;i++) {
-				if (word[i] == answer.guess) indices.push(i);
+				if (word[i] == answer.guess){
+					indices.push(i);
+				} else {
+					console.log("guess again!!")
+					break;
+				}
 			}
 			if (indices.length > 0 ){
 				for(var i=0; i<indices.length;i++) {
@@ -27,9 +32,17 @@ var guessLetter = function(){
 				}
 				guessedWord = (wordBlankArray.toString()).replace(/,/g, ' ');
 				console.log((guessedWord));
-			}    
+			}
+			numGuesses++;    
 			guessLetter(); 
 		});
+	} else{
+		if (guessedWord.replace(/ /g, '') == word) {
+			console.log("Horry, you won!!");
+		} else {
+			console.log("Sorry the word is " + word );
+		}
 	};
 };
+
 guessLetter();
