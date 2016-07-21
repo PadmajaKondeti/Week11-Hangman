@@ -17,11 +17,17 @@ var guessLetter = function(){
 		message: "Guess a letter?"
 		}
 	]).then(function(answer) {
-
+		var indices = [];
+		for(var i=0; i<word.length;i++) {
+			if (word[i] == answer.guess) indices.push(i);
+		}
+		
 		
 		var value = word.indexOf(answer.guess);
-		if (value >= 0 ){
-			
+		if (indices.length > 0 ){
+			for(var i=0; i<indices.length;i++) {
+				wordBlank[indices[i]] = answer.guess ;
+			}
 			console.log(value);
 			
 			wordBlank[value]= answer.guess;
@@ -31,7 +37,6 @@ var guessLetter = function(){
 		}		
 	})
 };
-require('events').EventEmitter.prototype._maxListeners = 100;
 //console.log(wordBlank);
 //wordBlank = wordBlank.split("");
 var letter1 = function(){
