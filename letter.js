@@ -21,10 +21,7 @@ var guessLetter = function(){
 			for(var i=0; i<wordlength;i++) {
 				if (word[i] == answer.guess){
 					indices.push(i);
-				} else {
-					console.log("guess again!!")
-					break;
-				}
+				} 
 			}
 			if (indices.length > 0 ){
 				for(var i=0; i<indices.length;i++) {
@@ -44,5 +41,4 @@ var guessLetter = function(){
 		}
 	};
 };
-
 guessLetter();
