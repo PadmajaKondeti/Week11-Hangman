@@ -7,32 +7,29 @@ var wordlength = word.length;
 for (var i=0; i<wordlength; i++){
 	wordBlank += "_ ";
 };
+var guessedWord = wordBlank;
+console.log(guessedWord);
 var wordBlankArray = wordBlank.trim().split(' ');
 var guessLetter = function(){
-	inquirer.prompt([{	
-		name: "guess",
-		message: "Guess a letter?"
-		}
-	]).then(function(answer) {
-		var indices = [];
-		for(var i=0; i<wordlength;i++) {
-			if (word[i] == answer.guess) indices.push(i);
-		}
-		var value = word.indexOf(answer.guess);
-		if (indices.length > 0 ){
-			for(var i=0; i<indices.length;i++) {
-				wordBlankArray[indices[i]] = answer.guess ;
+	if (guessedWord.indexOf('_')>= 0){
+		inquirer.prompt([{
+			name: "guess",
+			message: "Guess a letter?"
 			}
-			console.log((wordBlankArray.toString()).replace(/,/g, ' '));
-		}		
-	})
-};
-var wordGame = function(){
-			
-	if (count < wordlength){
-		guessLetter();
-		count++;
+		]).then(function(answer) {
+			var indices = [];
+			for(var i=0; i<wordlength;i++) {
+				if (word[i] == answer.guess) indices.push(i);
+			}
+			if (indices.length > 0 ){
+				for(var i=0; i<indices.length;i++) {
+				wordBlankArray[indices[i]] = answer.guess ;
+				}
+				guessedWord = (wordBlankArray.toString()).replace(/,/g, ' ');
+				console.log((guessedWord));
+			}    
+			guessLetter(); 
+		});
 	};
-	//wordGame();
 };
-wordGame();
+guessLetter();
