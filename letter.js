@@ -35,7 +35,7 @@ var guessLetter = function(){
 		});
 	} else{
 		if (guessedWord.replace(/ /g, '') == word) {
-			console.log("Horry, you won!!");
+			console.log("Hooray, you won!!");
 		} else {
 			console.log("Sorry the word is " + word );
 		}
